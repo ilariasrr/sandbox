@@ -17,9 +17,22 @@ Brevo.push([
   },
 ]);
 
-Brevo.push([
-  "identify",
-  {
-    identifiers: { ext_id: "ilaria.serra@brevo.com" },
-  },
-]);
+// No default ext_id: visitors stay anonymous unless a test value is set
+// via the ext-id-switcher widget (localStorage "test_ext_id").
+function getExtId() {
+  try {
+    return localStorage.getItem("test_ext_id") || "";
+  } catch (e) {
+    return "";
+  }
+}
+
+var extId = getExtId();
+if (extId) {
+  Brevo.push([
+    "identify",
+    {
+      identifiers: { ext_id: extId },
+    },
+  ]);
+}

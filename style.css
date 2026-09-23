@@ -152,3 +152,52 @@ footer {
   border-top: 1px solid var(--neutral-200);
   background: var(--white);
 }
+
+/* Testing widget — set a custom ext_id for the Brevo tracker (dev use only) */
+#ext-id-switcher {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--charcoal);
+  color: var(--white);
+  padding: 0.5rem 0.6rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+#ext-id-switcher .ext-id-label {
+  opacity: 0.7;
+  white-space: nowrap;
+}
+
+#ext-id-switcher input {
+  font-size: 0.75rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--neutral-300);
+  width: 150px;
+}
+
+#ext-id-switcher button {
+  font-size: 0.75rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#ext-id-switcher #ext-id-save {
+  background: var(--forest-green);
+  color: var(--white);
+}
+
+#ext-id-switcher #ext-id-clear {
+  background: var(--neutral-300);
+  color: var(--charcoal);
+}
