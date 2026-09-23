@@ -77,7 +77,11 @@
     Brevo.push([
       "track",
       "product_page_view", // constant name so the automation trigger can find it
-      {}, // no contact attributes to set here
+      // Explicitly pass the visitor identifier here too, in case it isn't
+      // carried over from the earlier identify() call in tracker.js.
+      typeof getExtId === "function" && getExtId()
+        ? { identifiers: { ext_id: getExtId() } }
+        : {},
       {
         id: "product-view:" + product.id + ":" + Date.now(),
         data: {
