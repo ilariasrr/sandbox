@@ -75,7 +75,7 @@
     window.Brevo = window.Brevo || [];
     Brevo.push([
       "page",
-      "product_page_view",
+      "Product: " + product.name, // unique per product so each view is logged distinctly
       {
         page_url: location.href,
         page_type: "product",
