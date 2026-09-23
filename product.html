@@ -69,12 +69,12 @@
         '</div>' +
       '</div>';
 
-    // ---- Brevo custom event: product page view ----
-    // Brevo.push(["track", event_name, properties])
-    // https://developers.brevo.com/docs/track-custom-events-js
+    // ---- Brevo page event, enriched with product properties ----
+    // Brevo.push(["page", page_name, properties])
+    // https://developers.brevo.com/docs/track-page-views-js
     window.Brevo = window.Brevo || [];
     Brevo.push([
-      "track",
+      "page",
       "product_page_view",
       {
         page_url: location.href,
