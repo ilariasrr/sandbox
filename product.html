@@ -69,24 +69,29 @@
         '</div>' +
       '</div>';
 
-    // ---- Brevo page event, enriched with product properties ----
-    // Brevo.push(["page", page_name, properties])
-    // https://developers.brevo.com/docs/track-page-views-js
+    // ---- Brevo custom event: product page view ----
+    // Brevo.push(["track", event_name, properties, event_data])
+    // "event_data.data" is what populates {{ params.xxx }} variables in
+    // automation emails — https://developers.brevo.com/docs/track-custom-events-js
     window.Brevo = window.Brevo || [];
     Brevo.push([
-      "page",
-      "Product: " + product.name, // unique per product so each view is logged distinctly
+      "track",
+      "product_page_view", // constant name so the automation trigger can find it
+      {}, // no contact attributes to set here
       {
-        page_url: location.href,
-        page_type: "product",
-        product_id: product.id,
-        product_name: product.name,
-        product_price: product.price,
-        product_currency: product.currency,
-        product_image_url: product.image_url,
-        product_category: product.category,
-        product_discounted_price: product.discounted_price,
-        product_in_stock: product.in_stock,
+        id: "product-view:" + product.id + ":" + Date.now(),
+        data: {
+          page_url: location.href,
+          page_type: "product",
+          product_id: product.id,
+          product_name: product.name,
+          product_price: product.price,
+          product_currency: product.currency,
+          product_image_url: product.image_url,
+          product_category: product.category,
+          product_discounted_price: product.discounted_price,
+          product_in_stock: product.in_stock,
+        },
       },
     ]);
   }
