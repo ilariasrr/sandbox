@@ -76,7 +76,7 @@
     window.Brevo = window.Brevo || [];
     Brevo.push([
       "track",
-      "product_viewed", // constant name so the automation trigger can find it
+      "product_page_view", // constant name so the automation trigger can find it
       // Explicitly pass the visitor identifier here too, in case it isn't
       // carried over from the earlier identify() call in tracker.js.
       typeof getExtId === "function" && getExtId()
