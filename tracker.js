@@ -1,5 +1,4 @@
-// Brevo tracker — Version: 2.0
-// Edit this file to update the tracker on all pages at once.
+// Brevo tracker — Version: 2.1 (ext_id en dur pour les tests)
 
 (function () {
   var s = document.createElement("script");
@@ -13,18 +12,16 @@ Brevo.push([
   "init",
   {
     client_key: "yfhr94n6pag3njhe0jkexuvm",
-    // Optional: Add other initialization options, see documentation
   },
 ]);
 
-// No default ext_id: visitors stay anonymous unless a test value is set
-// via the ext-id-switcher widget (localStorage "test_ext_id").
+// ext_id en dur : tous les visiteurs sont identifiés avec cette valeur.
+// Pour repasser en anonyme, mets "" ici.
+var HARDCODED_EXT_ID = "test1";
+
+// On garde getExtId() car product.html peut l'appeler.
 function getExtId() {
-  try {
-    return localStorage.getItem("test_ext_id") || "";
-  } catch (e) {
-    return "";
-  }
+  return HARDCODED_EXT_ID;
 }
 
 var extId = getExtId();
@@ -32,7 +29,7 @@ if (extId) {
   Brevo.push([
     "identify",
     {
-      identifiers: { ext_id: extId },
+      identifiers: { ext_id: String(extId) },
     },
   ]);
 }
